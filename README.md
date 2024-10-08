@@ -1,14 +1,7 @@
-
-# Layer Pruning of Large Language Models
-
-This repository hosts the [unofficial] implementation of a layer pruning strategy for Large Language Models (LLMs) based on the insights from the paper "[The Unreasonable Ineffectiveness of the Deeper Layers](https://arxiv.org/abs/2403.17887)" by Andrey Gromov et al. The paper empirically demonstrates that LLMs can have a substantial number of their layers removed with minimal performance degradation, especially on question-answering benchmarks.
-
-## Summary of the Paper
-
-The authors present a straightforward method for pruning layers from popular pretrained LLMs. They identify optimal blocks of layers for pruning by analyzing similarity across layers. The approach suggests that deeper layers in these LLMs are often more redundant than previously thought. After pruning, the model can be "healed" using Parameter-Efficient Fine-tuning (PEFT) methods like QLoRA to recover from the pruning-induced performance loss. 
+## Model Recipe
+This repository hosts the  model recipe of the model.
 
 ## Steps
-
 
 ### 1. First compute the block/layer similarity given a dataset
 
@@ -33,13 +26,3 @@ python layer_similarity.py --model_path "mistralai/Mistral-7B-Instruct-v0.2" \
 ### Create the new model with the [Mergekit](https://github.com/arcee-ai/mergekit)
 
 After identifying the layers to prune, you can proceed to the `slice_with_mergekit` directory and prune the model with the MergeKit library.
-
-
-## Use Cases
-
-The layer pruning strategy detailed in the paper and implemented in this codebase is beneficial for:
-
-- Reducing the computational requirements of LLMs without significant performance loss.
-- Facilitating fine-tuning and potential continuous pretraining of pruned models.
-- Initial experiments suggest the pruned models can still generate coherent text.
-- When combined with techniques like QLoRA, pruned models can heal from performance drops efficiently.
