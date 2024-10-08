@@ -1,5 +1,5 @@
 ## Model Recipe
-This repository hosts the  model recipe of the model.
+Welcome to the LeEmpereur_70 project! This repository contains the implementation recipe and fine-tuning scripts for the `LeEmpereur_70-Base` model.
 
 ## Steps
 
